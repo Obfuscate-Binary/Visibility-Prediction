@@ -6,3 +6,5 @@ seaborn
 flask
 flask_cors
 joblib
+sqlite3
+logging
