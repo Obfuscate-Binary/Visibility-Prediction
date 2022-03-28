@@ -6,4 +6,5 @@ seaborn
 flask
 flask_cors
 joblib
-
+gunicorn
+Jinja2
