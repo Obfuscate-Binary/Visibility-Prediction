@@ -8,3 +8,7 @@ flask_cors
 joblib
 gunicorn
 Jinja2
+Click==7.0
+itsdangerous==1.1.0
+MarkupSafe==1.1.1
+Werkzeug==0.16.0
