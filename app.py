@@ -56,8 +56,8 @@ def get_serialized_objects():
     scaler_obj = joblib.load(path+"scaler_obj.pickle")
     return randomforest_obj , scaler_obj
 
+if __name__ == "__main__":
 
-
-app.run(debug=True)
+    app.run(debug=True)
 
 
