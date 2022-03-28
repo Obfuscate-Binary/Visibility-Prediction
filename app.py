@@ -24,7 +24,7 @@ app = flask.Flask(__name__)
 
 # createTable()
 
-@app.route('/' , methods =  ['GET' , 'POST'])
+@app.route('/' , methods =  ['POST'])
 @cross_origin()
 def home_page():
     return render_template("form.html")
