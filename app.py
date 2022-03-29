@@ -52,7 +52,7 @@ def pred_page():
 
 def get_serialized_objects():
     path = 'Final_Model//'
-    randomforest_obj = joblib.load(path+"RandomForest.pickle")
+    randomforest_obj = joblib.load(path+"XGBoost.pickle")
     scaler_obj = joblib.load(path+"scaler_obj.pickle")
     return randomforest_obj , scaler_obj
 
