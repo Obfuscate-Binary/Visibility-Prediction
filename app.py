@@ -8,6 +8,7 @@ from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS, cross_origin
 from data_ingestion.data_loader import load_data
 from model_building.reducing_features import  clusters
+from xgboost import XGBRegressor
 # from PredictionsToDB.PredictionsToDB import createTable , enterTable
 
 #
