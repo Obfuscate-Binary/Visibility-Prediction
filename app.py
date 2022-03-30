@@ -33,18 +33,24 @@ def home_page():
 @app.route('/prediction' , methods =  ['GET' , 'POST'])
 @cross_origin()
 def pred_page():
-    if request.method=='POST':
-        Precipitation = float(request.form["Precipitation"])
-        Dry_Bulb_Temp = float(request.form["Dry_Bulb_Temp"])
-        Wet_Bulb_Temp=  float(request.form["Wet_Bulb_Temp"])
-        Relative_Humidity = float(request.form["Relative_Humidity"])
-        Wind_Speed=  float(request.form["Wind_Speed"])
-        Wind_Direction = float(request.form["Wind_Direction"])
-        Sea_level_Pressure = float(request.form["Sea_level_Pressure"])
+    try:
+        if request.method=='POST':
+            Precipitation = float(request.form["Precipitation"])
+            Dry_Bulb_Temp = float(request.form["Dry_Bulb_Temp"])
+            Wet_Bulb_Temp=  float(request.form["Wet_Bulb_Temp"])
+            Relative_Humidity = float(request.form["Relative_Humidity"])
+            Wind_Speed=  float(request.form["Wind_Speed"])
+            Wind_Direction = float(request.form["Wind_Direction"])
+            Sea_level_Pressure = float(request.form["Sea_level_Pressure"])
 
-        input = np.array([Dry_Bulb_Temp, Wet_Bulb_Temp, Relative_Humidity, Wind_Speed,Wind_Direction, Sea_level_Pressure, Precipitation]).reshape(1,7)
+            input = np.array([Dry_Bulb_Temp, Wet_Bulb_Temp, Relative_Humidity, Wind_Speed,Wind_Direction, Sea_level_Pressure, Precipitation]).reshape(1,7)
+            #for i in input:
+                #if(not isdigit(i)):
+                #raise ValueError("Wrong Input, Enter integers only !")
+            # enterTable(Dry_Bulb_Temp, Wet_Bulb_Temp, Relative_Humidity, Wind_Speed,Wind_Direction, Sea_level_Pressure, Precipitation)
+    except :
+        return render_template('Error.html' , result = "Wrong Input, Enter integers only!")
 
-        # enterTable(Dry_Bulb_Temp, Wet_Bulb_Temp, Relative_Humidity, Wind_Speed,Wind_Direction, Sea_level_Pressure, Precipitation)
 
         model , scaler = get_serialized_objects()
 
@@ -60,5 +66,3 @@ def get_serialized_objects():
 if __name__ == "__main__":
 
     app.run(debug=True)
-
-
