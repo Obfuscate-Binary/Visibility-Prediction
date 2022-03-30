@@ -44,18 +44,16 @@ def pred_page():
             Sea_level_Pressure = float(request.form["Sea_level_Pressure"])
 
             input = np.array([Dry_Bulb_Temp, Wet_Bulb_Temp, Relative_Humidity, Wind_Speed,Wind_Direction, Sea_level_Pressure, Precipitation]).reshape(1,7)
-            #for i in input:
-                #if(not isdigit(i)):
-                #raise ValueError("Wrong Input, Enter integers only !")
+
             # enterTable(Dry_Bulb_Temp, Wet_Bulb_Temp, Relative_Humidity, Wind_Speed,Wind_Direction, Sea_level_Pressure, Precipitation)
     except :
         return render_template('Error.html' , result = "Wrong Input, Enter integers only!")
 
 
-        model , scaler = get_serialized_objects()
+    model , scaler = get_serialized_objects()
 
-        output = model.predict(np.array(scaler.transform(input)).reshape(1,7))
-        return render_template('prediction.html' , result = str(round(output[0],2)))
+    output = model.predict(np.array(scaler.transform(input)).reshape(1,7))
+    return render_template('prediction.html' , result = str(round(output[0],2)))
 
 def get_serialized_objects():
     path = 'Final_Model//'
